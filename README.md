@@ -33,6 +33,36 @@ history with diffs, ZIP import/export, and push-to-GitHub.
 
 ---
 
+## Demo video
+
+<a href="https://ememndon.com/videos/gostera.mp4">
+  <img src=".github/assets/video-poster.png" alt="Gostera quick tour — click to play" width="100%">
+</a>
+
+<video src="https://ememndon.com/videos/gostera.mp4" poster=".github/assets/video-poster.png" controls width="100%"></video>
+
+---
+
+## Screenshots
+
+**Build mode — prompt on the left, live preview on the right**
+
+![Build mode with live preview](.github/assets/screenshot-build.png)
+
+**Agent mode — the tool loop running, streamed step by step**
+
+![Agent mode mid-run](.github/assets/screenshot-agent.png)
+
+**Code editor — file tree, syntax highlighting, in-file search**
+
+![Code editor](.github/assets/screenshot-editor.png)
+
+**Usage dashboard — token spend, cost per model, live rate-limit buckets**
+
+![Usage dashboard](.github/assets/screenshot-usage.png)
+
+---
+
 ## Feature surface
 
 **Agentic build loop**
