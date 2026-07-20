@@ -1,0 +1,32 @@
+Copyright (c) 2026 Emem Ndon. All rights reserved.
+
+PROPRIETARY — NOT AN OPEN SOURCE LICENSE
+
+This source code is published publicly for a narrow purpose: portfolio review,
+hiring evaluation, and technical due diligence. Making it readable is not the
+same as making it free to use.
+
+You may:
+  - Read, browse, and reference this source code.
+  - Clone it locally for the sole purpose of evaluating the author's work.
+  - Quote short excerpts with attribution when discussing or reviewing it.
+
+You may not, without prior written permission from the copyright holder:
+  - Use this code, in whole or in part, in any other project.
+  - Redistribute, republish, sublicense, or sell it.
+  - Deploy or operate it as a service, whether internally or publicly.
+  - Create derivative works from it.
+  - Use it as training data for machine learning models.
+
+No license, express or implied, is granted beyond the permissions stated above.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHOR BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Note on operation: this software executes shell commands on the machine it runs
+on and ships without authentication. Anyone running it does so entirely at their
+own risk. See the security section of README.md before deploying it anywhere.
