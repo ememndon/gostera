@@ -3,11 +3,11 @@
 Images referenced by the root `README.md`. Drop files here using **exactly** these
 filenames and they will appear in the project page automatically.
 
-| Filename | What it should show | Referenced as |
+| Filename | What it shows | Referenced as |
 |---|---|---|
-| `video-poster.png` | A still frame from the demo video, used as the clickable thumbnail | Demo video section |
-| `screenshot-home.png` | Build mode: a prompt running with the live preview beside it | Screenshots #1 |
-| `screenshot-build.png` | Build mode: a prompt running with the live preview beside it | Screenshots #2 |
+| `video-poster.png` | Still frame from the demo video, used as the clickable thumbnail | Demo video section |
+| `screenshot-home.png` | Start screen: framework picker and quick-start grid | Screenshots #1 |
+| `screenshot-build.png` | Build mode: prompt and summary on the left, generated app running in the live preview | Screenshots #2 |
 
 ## Guidelines
 

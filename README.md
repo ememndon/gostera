@@ -45,21 +45,16 @@ history with diffs, ZIP import/export, and push-to-GitHub.
 
 ## Screenshots
 
-**Build mode — prompt on the left, live preview on the right**
+**Start screen** — pick a target framework and describe what you want, or import
+an existing project from a folder or ZIP.
 
-![Build mode with live preview](.github/assets/screenshot-build.png)
+![Gostera start screen with framework quick start](.github/assets/screenshot-home.png)
 
-**Agent mode — the tool loop running, streamed step by step**
+**Build mode** — the prompt and the model's summary on the left, the generated app
+running live on the right. This Pomodoro timer was built in one pass on the free
+Gemini tier: 258 tokens in, 12,838 out, under a tenth of a cent.
 
-![Agent mode mid-run](.github/assets/screenshot-agent.png)
-
-**Code editor — file tree, syntax highlighting, in-file search**
-
-![Code editor](.github/assets/screenshot-editor.png)
-
-**Usage dashboard — token spend, cost per model, live rate-limit buckets**
-
-![Usage dashboard](.github/assets/screenshot-usage.png)
+![Build mode with a generated app running in the live preview](.github/assets/screenshot-build.png)
 
 ---
 
