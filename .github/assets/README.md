@@ -6,10 +6,10 @@ filenames and they will appear in the project page automatically.
 | Filename | What it should show | Referenced as |
 |---|---|---|
 | `video-poster.png` | A still frame from the demo video, used as the clickable thumbnail | Demo video section |
-| `screenshot-build.png` | Build mode: a prompt running with the live preview beside it | Screenshots #1 |
-| `screenshot-agent.png` | Agent mode mid-run: the tool steps streaming as it works | Screenshots #2 |
-| `screenshot-editor.png` | The code editor with the file tree and syntax highlighting | Screenshots #3 |
-| `screenshot-usage.png` | The usage dashboard: token spend, cost, rate limits | Screenshots #4 |
+| `screenshot-home.png` | Build mode: a prompt running with the live preview beside it | Screenshots #1 |
+| `screenshot-build.png` | Build mode: a prompt running with the live preview beside it | Screenshots #2 |
+| `screenshot-agent.png` | Agent mode mid-run: the tool steps streaming as it works | Screenshots #3 |
+| `screenshot-editor.png` | The code editor with the file tree and syntax highlighting | Screenshots #4 |
 
 ## Guidelines
 
