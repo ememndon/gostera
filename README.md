@@ -20,13 +20,13 @@ past a single page falls apart and you end up debugging the AI's work by hand.
 
 Gostera closes that loop. It has three modes that share one project:
 
-- **Generate** — one-shot. Prompt in, whole project out, merged into your files.
-  For an existing project it returns only what changed rather than rewriting
-  everything.
-- **Agent** — a tool loop. The model gets seven real tools and up to 25 turns. It
-  writes files, runs `npm install` and `npm run build`, reads the failures and
+- **Generate** is the one-shot path. Prompt in, whole project out, merged into
+  your files. For an existing project it returns only what changed rather than
+  rewriting everything.
+- **Agent** is a tool loop. The model gets seven real tools and up to 25 turns.
+  It writes files, runs `npm install` and `npm run build`, reads the failures and
   fixes them, streaming every step to the UI as it happens.
-- **Discuss** — read-only Q&A over the real codebase. No file changes.
+- **Discuss** is read-only Q&A over the real codebase. No file changes.
 
 Seven target frameworks, five models across two providers, live preview, version
 history with diffs, ZIP import/export, and push-to-GitHub.
@@ -36,7 +36,7 @@ history with diffs, ZIP import/export, and push-to-GitHub.
 ## Demo video
 
 <a href="https://ememndon.com/videos/gostera.mp4">
-  <img src=".github/assets/video-poster.png" alt="Gostera quick tour — click to play" width="100%">
+  <img src=".github/assets/video-poster.png" alt="Gostera quick tour, click to play" width="100%">
 </a>
 
 <video src="https://ememndon.com/videos/gostera.mp4" poster=".github/assets/video-poster.png" controls width="100%"></video>
@@ -45,13 +45,13 @@ history with diffs, ZIP import/export, and push-to-GitHub.
 
 ## Screenshots
 
-**Start screen** — pick a target framework and describe what you want, or import
+**Start screen.** Pick a target framework and describe what you want, or import
 an existing project from a folder or ZIP.
 
 ![Gostera start screen with framework quick start](.github/assets/screenshot-home.png)
 
-**Build mode** — the prompt and the model's summary on the left, the generated app
-running live on the right. This Pomodoro timer was built in one pass on the free
+**Build mode.** The prompt and the model's summary sit on the left, the generated
+app runs live on the right. This Pomodoro timer was built in one pass on the free
 Gemini tier: 258 tokens in, 12,838 out, under a tenth of a cent.
 
 ![Build mode with a generated app running in the live preview](.github/assets/screenshot-build.png)
@@ -66,18 +66,18 @@ Gemini tier: 258 tokens in, 12,838 out, under a tenth of a cent.
 - Up to 25 autonomous turns; installs dependencies, builds, and self-corrects
 - Every step streamed as newline-delimited JSON events (`turn_start`,
   `tool_call`, `tool_result`, `text`, `done`, `error`)
-- **Plan-first mode** — the model writes a numbered plan and waits for approval
-  before anything touches disk
-- **Pre-run snapshot** — project state is saved to version history before every
-  run, so any run is reversible
+- **Plan-first mode**, where the model writes a numbered plan and waits for
+  approval before anything touches disk
+- **Pre-run snapshot**, saving project state to version history before every run,
+  so any run is reversible
 - Live token and cost meter while the loop runs; hard output-token ceiling per run
 - Stop actually stops: the abort signal is threaded into the server-side loop
 
 **Sandboxed command execution**
-- Commands spawn **without a shell** — argv is parsed directly
+- Commands spawn **without a shell**, so argv is parsed directly
 - Shell metacharacters rejected outright: <code>&</code> <code>|</code> <code>;</code> <code>&lt;</code> <code>&gt;</code> <code>`</code> <code>$</code> <code>^</code> <code>%</code>
 - Executable allowlist: `npm`, `npx`, `node`, `pip`, `git`, `tsc`, `vite`, `next`
-- `git` restricted to local subcommands — `push`, `pull`, `fetch`, `clone` and
+- `git` restricted to local subcommands, so `push`, `pull`, `fetch`, `clone` and
   `remote` are blocked
 - Inline-eval flags (`node -e`, `python -c`) blocked
 - Paths confined both lexically and after realpath resolution, so an in-project
@@ -87,7 +87,7 @@ Gemini tier: 258 tokens in, 12,838 out, under a tenth of a cent.
 **Multi-provider AI**
 - Claude Haiku 4.5, Sonnet 4, Sonnet 4.6, Opus 4.8, and Gemini 3.5 Flash
 - Gemini runs through its OpenAI-compatible endpoint with a hand-rolled adapter
-  and no extra SDK — the same shape works for Groq or OpenRouter
+  and no extra SDK. The same shape works for Groq or OpenRouter.
 - Routes branch on the provider *before* resolving credentials, so you only need
   a key for the provider you actually use
 - Claude supports both subscription (OAuth) and metered API-key auth
@@ -165,11 +165,11 @@ flowchart LR
   GH -->|"Git Data API"| REPO
 ```
 
-The defining constraint: **the browser store and the disk are two copies of the
-same project.** Generate mode owns the store and syncs down to disk; Agent mode
-owns the disk and syncs back up. A fingerprint comparison sits between them and
-raises a Sync prompt when they disagree, which is what keeps an agent run from
-being silently reverted by the next Generate.
+The defining constraint is that **the browser store and the disk are two copies
+of the same project.** Generate mode owns the store and syncs down to disk, while
+Agent mode owns the disk and syncs back up. A fingerprint comparison sits between
+them and raises a Sync prompt when they disagree, which is what keeps an agent run
+from being silently reverted by the next Generate.
 
 ---
 
@@ -181,14 +181,14 @@ being silently reverted by the next Generate.
 | UI | React 18, Tailwind CSS v3, shadcn/ui on Radix primitives |
 | State | Zustand with `persist` middleware |
 | Storage | IndexedDB via `idb-keyval`; localStorage for UI prefs |
-| AI — Claude | `@anthropic-ai/sdk`, streaming, OAuth or API key |
-| AI — Gemini | Hand-rolled `fetch` adapter over the OpenAI-compatible endpoint |
+| AI (Claude) | `@anthropic-ai/sdk`, streaming, OAuth or API key |
+| AI (Gemini) | Hand-rolled `fetch` adapter over the OpenAI-compatible endpoint |
 | Agent runtime | Node `child_process.spawn`, no shell, allowlisted argv |
 | Markdown | `react-markdown` + `remark-gfm` |
 | Syntax highlighting | `highlight.js` |
 | Archives | JSZip |
 | GitHub | OAuth 2.0 + Git Data API, no SDK |
-| Persistence backend | None — no database, no server-side project storage |
+| Persistence backend | None. No database, no server-side project storage. |
 
 Roughly 10,600 lines of TypeScript across 15 API routes.
 
@@ -252,9 +252,9 @@ engineering:
 
 | File | Why |
 |---|---|
-| [`lib/agent-tools.ts`](lib/agent-tools.ts) | The seven tools and the command sandbox — argv parsing, allowlisting, path confinement, process-tree kill |
+| [`lib/agent-tools.ts`](lib/agent-tools.ts) | The seven tools and the command sandbox: argv parsing, allowlisting, path confinement, process-tree kill |
 | [`app/api/agent/route.ts`](app/api/agent/route.ts) | The agent loop itself, with parallel Claude and Gemini implementations and a shared event stream |
-| [`lib/parse-response.ts`](lib/parse-response.ts) | Truncation salvage — recovering complete files out of a half-finished JSON response |
+| [`lib/parse-response.ts`](lib/parse-response.ts) | Truncation salvage, recovering complete files out of a half-finished JSON response |
 | [`docs/ARCHITECTURE-AUDIT.md`](docs/ARCHITECTURE-AUDIT.md) | A full self-audit of this codebase, 16 findings, and what each fix became |
 
 ---
@@ -278,10 +278,10 @@ You need **at least one** provider key:
 
 | Variable | What it enables |
 |---|---|
-| `GEMINI_API_KEY` | Gemini 3.5 Flash — free tier, works in all three modes. Get one at [aistudio.google.com](https://aistudio.google.com) |
+| `GEMINI_API_KEY` | Gemini 3.5 Flash on the free tier, working in all three modes. Get one at [aistudio.google.com](https://aistudio.google.com) |
 | `CLAUDE_CODE_OAUTH_TOKEN` | Claude via a Pro/Max subscription (`claude setup-token`) |
 | `ANTHROPIC_API_KEY` | Claude via metered API billing |
-| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | Optional — the "Push to GitHub" button |
+| `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | Optional, for the "Push to GitHub" button |
 
 ### Run
 
@@ -317,7 +317,7 @@ it runs on.**
 Anyone who can reach the port can use Agent mode to read, write and delete files
 in the projects directory and run `npm`/`node`/`python`/`git` commands **as the
 user running the app**. The sandbox constrains *what* the agent can run, not
-*where* it runs — `npm install` on a project is still real code execution.
+*where* it runs. Running `npm install` on a project is still real code execution.
 
 This is a deliberate trade for a tool you run on your own machine. If you want it
 on a server, pick at least one of these first:
@@ -329,9 +329,9 @@ on a server, pick at least one of these first:
    # from your laptop
    ssh -L 3000:127.0.0.1:3000 user@your-server
    ```
-2. **Put an authenticating reverse proxy in front** — Caddy `basicauth`, nginx
-   `auth_basic`, Cloudflare Access, Tailscale. Bind the app to `127.0.0.1` so
-   only the proxy can reach it.
+2. **Put an authenticating reverse proxy in front**, such as Caddy `basicauth`,
+   nginx `auth_basic`, Cloudflare Access, or Tailscale. Bind the app to
+   `127.0.0.1` so only the proxy can reach it.
 3. **Restrict by firewall** to your own IP.
 
 Either way, run it as a **dedicated unprivileged user**, never root.
@@ -367,7 +367,7 @@ WantedBy=multi-user.target
 This is a public snapshot of Gostera, published so the code can be read and
 reviewed. Active development happens in a private repository, so this copy may
 lag slightly behind. Nothing has been stripped out except local environment
-files — it is complete and builds from a clean clone with `npm ci && npm run
+files. It is complete and builds from a clean clone with `npm ci && npm run
 build`.
 
 `CLAUDE.md` is the full technical reference: architecture, API routes, provider
@@ -377,7 +377,7 @@ adapters, storage model, and known constraints.
 
 ## License
 
-Proprietary — all rights reserved.
+Proprietary, all rights reserved.
 
 This source is published for portfolio review, hiring, and technical due
 diligence. It is **not licensed for reuse, redistribution, or deployment**.
